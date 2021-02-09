@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "This is testing node projeck",
+  "main": "index.js",
+  "scripts": {
+    "test:lint": "eslint .",
+    "test": "npm run test:lint"
+  },
+  "author": "Pavel Elfimov",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-htmlacademy": "^2.1.0"
+  },
+  "dependencies": {
+    "colors": "1.4.0"
+  }
+}
