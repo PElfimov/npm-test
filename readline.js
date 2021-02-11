@@ -12,4 +12,14 @@ rl.on(`line`, (line) => {
   line = line.trim();
 });
 
-switch
+switch (line) {
+  case `hello`:
+    console.log(`world`);
+    break;
+  case `bye`:
+    rl.close();
+    return;
+  default:
+    console.log(`Say what? I might have heard '${line}'`);
+    break;
+}
