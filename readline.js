@@ -22,13 +22,14 @@ rl.on(`line`, (line) => {
       console.log(`Say what? I might have heard '${line}'`);
       break;
   }
-});
 
-rl.prompt();
-rl.on(`close`, () => {
-  console.log(`Have a great day!`);
-  process.exit();
-}).on(`error`, (err) => {
-  console.log(err);
-  process.exit(1);
-});
+  rl.prompt();
+})
+  .on(`close`, () => {
+    console.log(`Have a great day!`);
+    process.exit();
+  })
+  .on(`error`, (err) => {
+    console.log(err);
+    process.exit(1);
+  });
