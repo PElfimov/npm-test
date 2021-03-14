@@ -7,7 +7,7 @@ const unlink = promisify(fs.unlink);
 const mkdir = promisify(fs.mkdir);
 const rmdir = promisify(fs.rmdir);
 
-const readWrite = (did) => {
+const readWrite = (dir) => {
   const path = `${dir}/newfile.txt`;
 
   let exist = false;
