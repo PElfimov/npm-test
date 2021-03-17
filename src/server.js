@@ -41,7 +41,7 @@ const readDir = async (path, res) =>{
 };
 
 const server = http.createServer((req, res) =>{
-  const adsolutePath = __dirname + url.parse(req.url).pathname;
+  const absolutePath = __dirname + url.parse(req.url).pathname;
 
 
   (async ()=>{
@@ -61,18 +61,16 @@ const server = http.createServer((req, res) =>{
       res.end();
     }
   })().catch((e)=>{
-      res.writeHead(500, e.message, {
-          `content-type`: `text/plain`
-      });
-      res.end(e.message)
+    res.writeHead(500, e.message);
+    res.end(e.message);
   });
 });
 
 const serverAddress = `http://${HOSTNAME}:${PORT}`;
 module.exports = {
-    run() {
-        server.listen(PORT, HOSTNAME, ()=>{
-            console.log(`Server running at ${serverAddress}/`);
-        });
-    }
+  run() {
+    server.listen(PORT, HOSTNAME, ()=>{
+      console.log(`Server running at ${serverAddress}/`);
+    });
+  }
 };
