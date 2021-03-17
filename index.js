@@ -1,3 +1,1 @@
-require(`colors`);
-
-console.log(`hello`.green);
+require(`./src/cli`);
