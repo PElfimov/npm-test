@@ -26,9 +26,10 @@ const printDirectory = (path, files) => {
 };
 
 const readFile = async (path, res) => {
-  const data = await readFile(path);
+  const data = await readfile(path);
   res.setHeader(`content-type`, `text/plain`);
   res.setHeader(`content-length`, Buffer.byteLength(data));
+  res.end(data);
 };
 
 
@@ -36,7 +37,7 @@ const readDir = async (path, res) =>{
   const files = await readdir(path);
   res.setHeader(`content-type`, `text/html`);
   const content = printDirectory(path, files);
-  res.setHeader(`content-length`, Buffer.byteLength(data));
+  res.setHeader(`content-length`, Buffer.byteLength(content));
   res.end(content);
 };
 
@@ -47,7 +48,6 @@ const server = http.createServer((req, res) =>{
   (async ()=>{
     try {
       const pathStat = await stat(absolutePath);
-
       res.statusCode = 200;
       res.statusMessage = `OK`;
 
@@ -57,6 +57,7 @@ const server = http.createServer((req, res) =>{
         await readFile(absolutePath, res);
       }
     } catch (e) {
+      console.log(`errors is ---`, e.message);
       res.writeHead(404, `Not Found`);
       res.end();
     }

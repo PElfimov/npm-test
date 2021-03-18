@@ -27,7 +27,6 @@ const args = process.argv.slice(2);
 
 if (args.length === 0) {
   server.run();
-  console.log(` nuthing `);
 } else {
   const firstCommand = args[0];
   if (!firstCommand.startsWith(`--`)) {
