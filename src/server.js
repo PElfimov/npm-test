@@ -1,5 +1,5 @@
 const express = require(`express`);
-const { generate: generateWizards } = require(`./generator/wizards-generator`);
+const {generate: generateWizards} = require(`./generator/wizards-generator`);
 
 const app = express();
 app.use(express.static(`static`));
