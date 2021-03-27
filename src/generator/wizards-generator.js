@@ -1,4 +1,4 @@
-const Color = require(`../../../src/data/color`);
+const Color = require(`../data/color`);
 
 
 const Boots = [{
