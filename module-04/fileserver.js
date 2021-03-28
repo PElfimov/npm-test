@@ -1,7 +1,7 @@
 const http = require(`http`);
 const url = require(`url`);
 const fs = require(`fs`);
-const {promisify} = require(`util`);
+const { promisify } = require(`util`);
 
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);

@@ -5,5 +5,5 @@ module.exports = {
   description: `Shows author name`,
   execute() {
     console.log(packageInfo.author);
-  }
+  },
 };

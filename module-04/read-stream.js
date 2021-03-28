@@ -1,6 +1,6 @@
 const fs = require(`fs`);
 
-const stream = fs.createReadStream(__filename, {highWaterMark: 16});
+const stream = fs.createReadStream(__filename, { highWaterMark: 16 });
 
 let part = 0;
 stream

@@ -5,5 +5,5 @@ module.exports = {
   description: `Shows program version`,
   execute() {
     console.log(`v${packageInfo.version}`);
-  }
+  },
 };
