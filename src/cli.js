@@ -11,8 +11,8 @@ const helpCommand = {
     console.log(`Available commands: 
 ${[...name2command]
   .map(
-    ([key, value]) =>
-      `--${key.padEnd(10).italic.grey} — ${value.description.green}`
+      ([key, value]) =>
+        `--${key.padEnd(10).italic.grey} — ${value.description.green}`
   )
   .join(`\n`)}`);
   },

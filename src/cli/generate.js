@@ -1,9 +1,9 @@
-const { generate } = require(`../generator/wizards-generator`);
+const {generate} = require(`../generator/wizards-generator`);
 const fs = require(`fs`);
 const util = require(`util`);
 const writeFile = util.promisify(fs.writeFile);
 
-const fileWriteOptions = { encoding: `utf-8`, mode: 0o644 };
+const fileWriteOptions = {encoding: `utf-8`, mode: 0o644};
 const data = generate();
 
 module.exports = {
