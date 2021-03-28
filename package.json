@@ -4,7 +4,7 @@
   "description": "This is testing node projeck",
   "main": "index.js",
   "scripts": {
-    "test:lint": "prettier .",
+    "test:lint": "eslint .",
     "test:mocha": "mocha --recursive",
     "test": "npm run test:lint && npm run test:mocha"
   },
