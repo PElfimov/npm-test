@@ -11,9 +11,8 @@ describe(`GET /api/wizards`, function () {
       .expect(`Content-Type`, /json/)
       .then((response) => {
         const page = response.body;
-        assert.equal(page.total, 17);
-        assert.equal(page.data.length, 17);
-        assert.equal(Object.keys(page.data[0]).length, 5);
+        assert.equal(page.length, 17);
+        assert.equal(Object.keys(page[0]).length, 5);
       });
   });
 
