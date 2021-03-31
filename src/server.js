@@ -9,6 +9,17 @@ app.get(`/api/wizards`, (req, res) => {
   res.send(wizards);
 });
 
+app.get(`/api/wizards/:name`, (req, res)=>{
+  const name = req.params[`name`].toLocaleLowerCase();
+  const wizard = wizards.find((it)=>it.name.toLocaleLowerCase() === name);
+
+  if (!wizard) {
+    res.status(404).end();
+  } else {
+    res.sendStatus(wizard);
+  }
+});
+
 const HOSTNAME = `127.0.0.1`;
 const PORT = 3000;
 
