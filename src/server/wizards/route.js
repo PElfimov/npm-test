@@ -25,13 +25,16 @@ const toPage = (data, skip = 0, limit = 20) => {
 };
 
 wizardsRouter.get(
-    ``,
-    async(async (req, res) => res.send(toPage(wizards)))
+  ``,
+  async(async (req, res) => res.send(toPage(wizards)))
 );
 
 wizardsRouter.get(`/:name`, (req, res) => {
+  console.log(`wizard1111111`);
   const name = req.params[`name`].toLocaleLowerCase();
-  const wizard = wizards.find((it) => it.name.toLocaleLowerCase() === name);
+  console.log(`name111 `, name);
+  const wizard = wizards.find((it) => it.username.toLocaleLowerCase() === name);
+  console.log(`wizard`, wizard);
 
   if (!wizard) {
     res.status(404).end();

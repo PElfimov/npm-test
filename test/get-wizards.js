@@ -16,6 +16,17 @@ describe(`GET /api/wizards`, function () {
       });
   });
 
+  it(`find wizard by name`, () => {
+    return request(app)
+      .get(`/api/wizards/${encodeURIComponent(`дамблдор`)}`)
+      .expect(200)
+      .expect(`Content-Type`, /json/)
+      .then((response) => {
+        const wizard = response.body;
+        assert.equal(wizard.username, `Дамблдор`);
+      });
+  });
+
   it(`unknown address should respond with 404`, () => {
     return request(app)
       .get(`/api/wizardsss`)
