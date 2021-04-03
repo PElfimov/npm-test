@@ -10,7 +10,7 @@ describe(`GET /api/wizards`, function () {
       .expect(200)
       .expect(`Content-Type`, /json/)
       .then((response) => {
-        const page = response.body;
+        const page = response.body.data;
         assert.equal(page.length, 17);
         assert.equal(Object.keys(page[0]).length, 5);
       });
