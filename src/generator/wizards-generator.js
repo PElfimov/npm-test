@@ -90,11 +90,11 @@ const createNamesIterator = () =>
 const getRandomFromArr = (arr) => arr[Math.floor(arr.length * Math.random())];
 
 const generate = () =>
-  [...createNamesIterator()].map((name) => ({
-    name,
-    colorCoat: getRandomFromArr(Color.COAT),
-    colorEyes: getRandomFromArr(Color.EYES),
-    colorFireball: getRandomFromArr(Color.FIREBALL),
+  [...createNamesIterator()].map((username) => ({
+    username,
+    coatColor: getRandomFromArr(Color.COAT),
+    eyesColor: getRandomFromArr(Color.EYES),
+    fireballColor: getRandomFromArr(Color.FIREBALL),
     artifacts: getArtifacts(),
   }));
 
