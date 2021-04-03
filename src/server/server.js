@@ -1,5 +1,5 @@
 const express = require(`express`);
-const {generate: generateWizards} = require(`./generator/wizards-generator`);
+const {generate: generateWizards} = require(`../generator/wizards-generator`);
 const bodyParser = require(`body-parser`);
 const multer = require(`multer`);
 

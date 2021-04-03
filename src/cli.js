@@ -1,6 +1,6 @@
 const authorCommand = require(`./cli/author`);
 const versionCommand = require(`./cli/version`);
-const server = require(`./server`);
+const server = require(`./server/server`);
 
 require(`colors`);
 

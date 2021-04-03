@@ -1,5 +1,5 @@
 const request = require(`supertest`);
-const {app} = require(`../src/server`);
+const {app} = require(`../src/server/server`);
 
 describe(`POST /api/wizards`, function () {
   it(`should consume JSON`, () => {
