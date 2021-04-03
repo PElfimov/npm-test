@@ -6,30 +6,24 @@ const MIN_NAME_LENGTH = 2;
 const requiredColorField = (set) => {
   return {
     required: true,
-    assertions: [
-      oneOf(set)
-    ]
+    assertions: [oneOf(set)],
   };
 };
 const schema = {
-  'username': {
+  username: {
     required: true,
     converter(val) {
       return val.trim();
     },
-    assertions: [
-      textRange(MIN_NAME_LENGTH, MAX_NAME_LENGTH)
-    ]
+    assertions: [textRange(MIN_NAME_LENGTH, MAX_NAME_LENGTH)],
   },
-  'avatar': {
+  avatar: {
     required: false,
-    assertions: [
-      isImage()
-    ]
+    assertions: [isImage()],
   },
-  'coatColor': requiredColorField(Color.COAT),
-  'eyeColor': requiredColorField(Color.EYES),
-  'fireballColor': requiredColorField(Color.FIREBALL)
+  coatColor: requiredColorField(Color.COAT),
+  eyeColor: requiredColorField(Color.EYES),
+  fireballColor: requiredColorField(Color.FIREBALL),
 };
 
 module.exports = schema;
