@@ -12,6 +12,10 @@ const assertField = (fieldName, fieldValue, ...errorMessages) => {
 
   const actual = validate({[fieldName]: fieldValue}, fieldName, schema[fieldName]);
 
+  console.log(`expected`, expected);
+  console.log(`actual`, actual);
+  console.log(`SSimilarity `, assert.deepEqual(actual, expected));
+
   assert.deepEqual(actual, expected);
 };
 
