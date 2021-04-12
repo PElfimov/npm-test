@@ -5,7 +5,8 @@ const ValidationError = require(`../error/validation-error`);
 const async = require(`../util/async`);
 const bodyParser = require(`body-parser`);
 const multer = require(`multer`);
-const {generate: generateWizards} = require(`../../generator/wizards-generator`);
+const wizardStore = require(`./store`);
+
 
 const wizardsRouter = new Router();
 
@@ -13,32 +14,34 @@ wizardsRouter.use(bodyParser.json());
 
 const upload = multer({storage: multer.memoryStorage()});
 
-const wizards = generateWizards();
 
-const toPage = (data, skip = 0, limit = 20) => {
+const toPage = async (cursor, skip = 0, limit = 20) => {
   return {
-    data: data.slice(skip, skip + limit),
+    data: await (cursor.skip(skip).limit(limit).toArray()),
     skip,
     limit,
-    total: data.length,
+    total: await cursor.count()
+
   };
 };
 
+wizardsRouter.store = wizardStore;
+
 wizardsRouter.get(
     ``,
-    async(async (req, res) => res.send(toPage(wizards)))
+    async(async (req, res) => res.send(await toPage(await wizardsRouter.store.getAllWizards())))
 );
 
-wizardsRouter.get(`/:name`, (req, res) => {
-  const name = req.params[`name`].toLocaleLowerCase();
-  const wizard = wizards.find((it) => it.username.toLocaleLowerCase() === name);
+// wizardsRouter.get(`/:name`, (req, res) => {
+//   const name = req.params[`name`].toLocaleLowerCase();
+//   const wizard = wizards.find((it) => it.username.toLocaleLowerCase() === name);
 
-  if (!wizard) {
-    res.status(404).end();
-  } else {
-    res.send(wizard);
-  }
-});
+//   if (!wizard) {
+//     res.status(404).end();
+//   } else {
+//     res.send(wizard);
+//   }
+// });
 
 wizardsRouter.post(``, upload.single(`avatar`), (req, res) => {
   const data = req.body;
