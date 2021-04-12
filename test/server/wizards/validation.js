@@ -1,20 +1,15 @@
-const {validate} = require(`../../src/server/util/validator`);
+const {validate} = require(`../../../src/server/util/validator`);
 
-const schema = require(`../../src/server/wizards/validation`);
+const schema = require(`../../../src/server/wizards/validation`);
 const assert = require(`assert`);
 
 const assertField = (fieldName, fieldValue, ...errorMessages) => {
+
   const expected = errorMessages.map((errorMessage) => ({
-    fieldName,
-    fieldValue,
-    errorMessage,
+    fieldName, fieldValue, errorMessage
   }));
 
   const actual = validate({[fieldName]: fieldValue}, fieldName, schema[fieldName]);
-
-  console.log(`expected`, expected);
-  console.log(`actual`, actual);
-  console.log(`SSimilarity `, assert.deepEqual(actual, expected));
 
   assert.deepEqual(actual, expected);
 };
